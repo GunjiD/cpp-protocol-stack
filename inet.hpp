@@ -6,6 +6,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct ip_hdr {
+  uint8_t version : 4;
+  uint8_t ihl : 4;
+  uint8_t type_of_service;
+  uint16_t total_length;
+  uint16_t identification;
+  uint16_t fragment_offset;
+  uint8_t ttl;
+  uint8_t protocol;
+  uint16_t hdr_checksum;
+  uint32_t source_address;
+  uint32_t destination_address;
+};
+
 int host_byte_order(void);
 uint16_t byte_swap16(uint16_t x);
 uint32_t byte_swap32(uint32_t x);

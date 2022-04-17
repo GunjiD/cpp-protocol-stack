@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int host_byte_order(void) {
 
@@ -64,7 +63,7 @@ uint32_t htonl(uint32_t host_long) {
 }
 
 void ntop(u_int32_t src, char *dest) {
-  u_char addr[16];
+  char addr[16];
   sprintf(addr, "%u.%u.%u.%u", (src >> 24) & 0xFF, (src >> 16) & 0xFF,
           (src >> 8) & 0xFF, (src >> 0) & 0xFF);
   strcpy(dest, addr);
