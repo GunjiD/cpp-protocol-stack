@@ -1,10 +1,14 @@
 #include "../ethernet.hpp"
 #include "../inet.hpp"
 #include "../ip.hpp"
-#include "../raw_soc.hpp"
+#include "../socket.hpp"
+
+#include <iostream>
+#include <iterator>
+#include <ostream>
+#include <sys/socket.h>
 #include <sys/types.h>
 
-int sock;
 // 受信したパケットのバイト数を格納
 ssize_t recv_byte;
 
@@ -18,11 +22,19 @@ int main(int argc, char *argv[]) {
   unsigned char *buffer = (unsigned char *)malloc(BUF_SIZ);
   memset(buffer, 0, BUF_SIZ);
 
-  sock = create_socket("enp9s0");
+  Socket socket;
+  IpProtocol ip;
+
+  std::cout << "ソケットを作成します" << std::endl;
+
+  socket.create("wlp8s0");
+
+  std::cout << "パケットの受信を開始します" << std::endl;
 
   while (1) {
 
-    recv_byte = recvfrom(sock, buffer, BUF_SIZ, 0, &saddr, &saddr_len);
+    recv_byte =
+        recvfrom(socket.getScoket(), buffer, BUF_SIZ, 0, &saddr, &saddr_len);
     // 受信したパケットを ethdr にキャストして代入する
     // ethhdr については if_ether.h を参照
     ethernet_hdr *eth_h = (ethernet_hdr *)(buffer);
@@ -32,14 +44,17 @@ int main(int argc, char *argv[]) {
     eth_hdr_dbg(eth_h, recv_byte);
 
     switch (ntohs(eth_h->ethehertype)) {
-
+      /*
     case ETH_T_ARP: {
       arp_hdr *arp_h = (arp_hdr *)(buffer + sizeof(ethernet_hdr));
       arp_dbg(arp_h);
     } break;
+      */
     default:
-      ip_hdr_dbg(ip_h, INTEGER);
+      ip.HdrDbg(buffer, INTEGER);
+      // ip_hdr_dbg(ip_h, INTEGER);
       // ip_hdr_dbg(ip_h, HEX);
       break;
     }
   }
+}
