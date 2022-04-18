@@ -12,10 +12,12 @@
 #include <sys/types.h>
 
 #include "ethernet.hpp"
+#include "inet.hpp"
 
 #define BUF_SIZ 65536
 
-char *dest_addr(ethernet_hdr *eth_hdr) {
+/*
+char EthernetProtocol::*dest_addr(ethernet_hdr *eth_hdr) {
   char *str;
   sprintf(str, "%.2X-%.2X-%.2X-%.2X-%.2X-%.2X", eth_hdr->dest[0],
           eth_hdr->dest[1], eth_hdr->dest[2], eth_hdr->dest[3],
@@ -23,15 +25,18 @@ char *dest_addr(ethernet_hdr *eth_hdr) {
   return str;
 }
 
-char *src_addr(ethernet_hdr *eth_hdr) {
+char EthernetProtocol::*src_addr(ethernet_hdr *eth_hdr) {
   char *str;
   sprintf(str, "%.2X-%.2X-%.2X-%.2X-%.2X-%.2X", eth_hdr->src[0],
           eth_hdr->src[1], eth_hdr->src[2], eth_hdr->src[3], eth_hdr->src[4],
           eth_hdr->src[5]);
   return str;
 }
+*/
 
-void eth_hdr_dbg(ethernet_hdr *eth_header, ssize_t recv_byte) {
+void EthernetProtocol::HdrDbg(unsigned char *buf, ssize_t recv_byte) {
+
+  ethernet_hdr *eth_header = (ethernet_hdr *)(buf);
 
   // Ethernet Header の解析
   printf("Ethernet Header\n");

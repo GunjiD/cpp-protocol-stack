@@ -1,10 +1,16 @@
 #ifndef BYTE_ORDER_H
 #define BYTE_ORDER_H
 
-#include "ip.hpp"
+#include <arpa/inet.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+const int ETH_P_ALL = 0x0003;
+const int MAC_LEN = 6;
+
+const int ETH_T_ARP = 0x0806;
 
 struct ip_hdr {
   uint8_t version : 4;
@@ -18,6 +24,12 @@ struct ip_hdr {
   uint16_t hdr_checksum;
   uint32_t source_address;
   uint32_t destination_address;
+};
+
+struct ethernet_hdr {
+  uint8_t dest[MAC_LEN];
+  uint8_t src[MAC_LEN];
+  uint16_t ethehertype;
 };
 
 int host_byte_order(void);

@@ -1,6 +1,7 @@
 #include "socket.hpp"
 #include "ethernet.hpp"
 
+#include "inet.hpp"
 #include <errno.h>
 #include <net/if.h>
 #include <netpacket/packet.h>

@@ -1,13 +1,10 @@
-#ifndef IP_H_
 #define IP_H_
+#ifndef IP_H_
 
 #include <arpa/inet.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <sys/socket.h>
 
-#include "ethernet.hpp"
+#include "inet.hpp"
 
 #define IP_CHAR_LEN 16
 #define HEX 0
