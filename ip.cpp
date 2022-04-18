@@ -14,7 +14,7 @@ void IpProtocol::HdrDbg(unsigned char *buf, int dump_form) {
    ip_hdr_dbg(ip_h, INTEGER);
   */
 
-  struct ip_hdr *ip_header = (struct ip_hdr *)(buf + sizeof(ethernet_hdr));
+  ip_header = (struct ip_hdr *)(buf + sizeof(ethernet_hdr));
 
   char ip_src[IP_CHAR_LEN];
   char ip_dest[IP_CHAR_LEN];

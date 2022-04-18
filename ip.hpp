@@ -15,8 +15,9 @@
 #define BUF_SIZ 65535
 
 class IpProtocol {
-  //    options
-  //    padding
+private:
+  struct ip_hdr *ip_header;
+
 public:
   void HdrDbg(unsigned char *buf, int dump_form);
 };
