@@ -1,0 +1,43 @@
+## 参考資料
+
+- https://rinatz.github.io/cpp-book/test-how-to-gtest/
+
+## 書き方
+
+### テスト関数
+
+TEST() を利用してテスト関数を作成する
+
+```
+// 大項目、 小項目の順で書く
+TEST(testCaseName, TestName){
+  // テスト関数内は通常通り C++ のコードを記述可能
+}
+```
+
+### アサーション
+
+アサーションを利用することでテスト対象コードの動作を保証する
+以下資料の引用
+
+期待結果、テスト対象の順で記述する
+
+```
+// true/falseのアサーション
+EXPECT_TRUE(condition);  // condition が true か
+EXPECT_FALSE(condition);  // condition が false か
+
+// 2つの値を比較するアサーション
+EXPECT_EQ(expected, actual);  // expected == actual か
+EXPECT_NE(expected, actual);  // expected != actual か
+EXPECT_LT(expected, actual);  // expected < actual か
+EXPECT_LE(expected, actual);  // expected <= actual か
+EXPECT_GT(expected, actual);  // expected > actual か
+EXPECT_GE(expected, actual);  // expected >= actual か
+```
+
+build 用のコマンドはこれを使う  
+
+```g++ sampleTest.cpp sample.hpp -lgtest_main -lgtest -pthread```
+
+todo: CMake を使うやり方が正統派のようなので、調べて導入する  
