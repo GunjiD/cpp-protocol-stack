@@ -1,9 +1,12 @@
-#include "ip.hpp"
+#include <iostream>
+
 #include "ethernet.hpp"
 #include "inet.hpp"
+#include "ip.hpp"
 
 // バイナリを受け取って IP ヘッダーにキャストすることで表示させる
 // dump_form は10進数か16進数で選べる
+
 void IpProtocol::HdrDbg(unsigned char *buf, int dump_form) {
 
   /*

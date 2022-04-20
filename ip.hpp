@@ -1,5 +1,5 @@
-#define IP_H_
 #ifndef IP_H_
+#define IP_H_
 
 #include <arpa/inet.h>
 #include <sys/socket.h>
@@ -16,6 +16,8 @@ private:
   struct ip_hdr *ip_header;
 
 public:
+  IpProtocol();
+  ~IpProtocol();
   void HdrDbg(unsigned char *buf, int dump_form);
 };
 
