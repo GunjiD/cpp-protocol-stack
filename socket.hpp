@@ -8,8 +8,8 @@ private:
   int fd;
 
 public:
-  Socket();
-  ~Socket();
+  Socket() {}
+  ~Socket() {}
 
   void create(char *interface_name);
   int getScoket();

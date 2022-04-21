@@ -7,10 +7,6 @@
 #include <netpacket/packet.h>
 #include <sys/ioctl.h>
 
-Socket::Socket() {}
-
-Socket::~Socket() {}
-
 void Socket::create(char *interface_name) {
 
   // インターフェースの設定を行う構造体
