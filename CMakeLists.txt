@@ -18,18 +18,16 @@ set(CMAKE_CXX_STANDARD 11)
 #add_library()
 add_library(ip STATIC ip.hpp ip.cpp)
 add_library(inet STATIC inet.hpp inet.cpp)
+add_library(socket STATIC socket.hpp socket.cpp)
+add_library(ethernet STATIC ethernet.hpp ethernet.cpp)
 
 
-add_executable(
+Add_executable(
   packetCapture.out
   app/packetCapture.cpp
   )
 
-Target_link_libraries(
-  packetCapture.out
-  ip
-  inet
- )
+Target_link_libraries(packetCapture.out socket inet ip ethernet)
 
 #include(GoogleTest)
 #gtest_discover_tests(hello_test)
