@@ -16,8 +16,8 @@ private:
   struct ip_hdr *ip_header;
 
 public:
-  IpProtocol();
-  ~IpProtocol();
+  IpProtocol() {}
+  ~IpProtocol() {}
   void HdrDbg(unsigned char *buf, int dump_form);
 };
 
