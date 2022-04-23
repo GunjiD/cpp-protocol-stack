@@ -9,7 +9,6 @@
 const int IP_CHAR_LEN = 16;
 const int HEX = 0;
 const int INTEGER = 1;
-const int BUF_SIZ = 65535;
 
 struct ip_hdr {
   uint8_t version : 4;
