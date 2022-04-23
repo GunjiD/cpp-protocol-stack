@@ -7,7 +7,7 @@
 // バイナリを受け取って IP ヘッダーにキャストすることで表示させる
 // dump_form は10進数か16進数で選べる
 
-void IpProtocol::HdrDbg(unsigned char *buf, int dump_form) {
+void ipHdrDbg(unsigned char *buf, int dump_form) {
 
   /*
    data のポインタを受け取って ethernet ヘッダー部分ずらして
@@ -16,6 +16,7 @@ void IpProtocol::HdrDbg(unsigned char *buf, int dump_form) {
    )前の実装
    ip_hdr_dbg(ip_h, INTEGER);
   */
+  struct ip_hdr *ip_header;
 
   ip_header = (struct ip_hdr *)(buf + sizeof(ethernet_hdr));
 

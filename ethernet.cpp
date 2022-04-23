@@ -12,9 +12,6 @@
 #include <sys/types.h>
 
 #include "ethernet.hpp"
-#include "inet.hpp"
-
-#define BUF_SIZ 65536
 
 /*
 char EthernetProtocol::*dest_addr(ethernet_hdr *eth_hdr) {
@@ -34,7 +31,7 @@ char EthernetProtocol::*src_addr(ethernet_hdr *eth_hdr) {
 }
 */
 
-void EthernetProtocol::HdrDbg(unsigned char *buf, ssize_t recv_byte) {
+void ethHdrDbg(unsigned char *buf, ssize_t recv_byte) {
 
   ethernet_hdr *eth_header = (ethernet_hdr *)(buf);
 

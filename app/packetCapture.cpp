@@ -23,8 +23,6 @@ int main(int argc, char *argv[]) {
   memset(buffer, 0, BUF_SIZ);
 
   Socket socket;
-  EthernetProtocol eth;
-  IpProtocol ip;
 
   std::cout << "ソケットを作成します" << std::endl;
 
@@ -40,7 +38,7 @@ int main(int argc, char *argv[]) {
     // ethhdr については if_ether.h を参照
     ethernet_hdr *eth_h = (ethernet_hdr *)(buffer);
 
-    eth.HdrDbg(buffer, recv_byte);
+    ethHdrDbg(buffer, recv_byte);
 
     switch (ntohs(eth_h->ethehertype)) {
       /*
@@ -50,7 +48,7 @@ int main(int argc, char *argv[]) {
     } break;
       */
     default:
-      ip.HdrDbg(buffer, INTEGER);
+      ipHdrDbg(buffer, INTEGER);
       //      ip.HdrDbg(buffer, HEX);
       break;
     }

@@ -6,19 +6,25 @@
 
 #include "inet.hpp"
 
-#define IP_CHAR_LEN 16
-#define HEX 0
-#define INTEGER 1
-#define BUF_SIZ 65535
+const int IP_CHAR_LEN = 16;
+const int HEX = 0;
+const int INTEGER = 1;
+const int BUF_SIZ = 65535;
 
-class IpProtocol {
-private:
-  struct ip_hdr *ip_header;
-
-public:
-  IpProtocol() {}
-  ~IpProtocol() {}
-  void HdrDbg(unsigned char *buf, int dump_form);
+struct ip_hdr {
+  uint8_t version : 4;
+  uint8_t ihl : 4;
+  uint8_t type_of_service;
+  uint16_t total_length;
+  uint16_t identification;
+  uint16_t fragment_offset;
+  uint8_t ttl;
+  uint8_t protocol;
+  uint16_t hdr_checksum;
+  uint32_t source_address;
+  uint32_t destination_address;
 };
+
+void ipHdrDbg(unsigned char *buf, int dump_form);
 
 #endif
